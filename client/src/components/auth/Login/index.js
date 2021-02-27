@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+
+import AuthContext from 'context/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { getLoggedIn } = useContext(AuthContext);
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +21,8 @@ const Login = () => {
       };
 
       await axios.post('/auth/login', loginData);
+      await getLoggedIn();
+      history.push('/');
     } catch (error) {
       console.error(error);
     }
