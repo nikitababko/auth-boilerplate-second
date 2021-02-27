@@ -13,8 +13,8 @@ app.listen(PORT, (err) => {
   if (err) {
     throw Error(err);
   }
+  console.log(`Server has started on port: ${PORT}`);
 });
-console.log(`Server has started on port: ${PORT}`);
 
 app.use(express.json());
 app.use(cookieParser());
