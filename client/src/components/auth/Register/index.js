@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+
+import AuthContext from 'context/AuthContext';
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVerify, setPasswordVerify] = useState('');
+
+  const { getLoggedIn } = useContext(AuthContext);
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,6 +23,8 @@ const Register = () => {
       };
 
       await axios.post('/auth', registerData);
+      await getLoggedIn();
+      history.push('/');
     } catch (error) {
       console.error(error);
     }
