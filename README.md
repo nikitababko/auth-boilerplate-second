@@ -1,4 +1,4 @@
-# Messenger
+# Auth boilerplate (Token is stored on cookies)
 
 ## Install
 
