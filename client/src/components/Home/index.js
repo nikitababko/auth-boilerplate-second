@@ -9,8 +9,8 @@ const Home = () => {
     <Router>
       <Navbar />
       <Switch>
-        <Route path="/register" component={Login} />
-        <Route path="/login" component={Register} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
         <Route path="/customers" component={Customers} />
       </Switch>
     </Router>
